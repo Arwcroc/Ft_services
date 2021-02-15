@@ -3,7 +3,6 @@ FROM alpine
 VOLUME [ "/sys/fs/cgroup/" ]
 
 USER root
-ADD ./init.sh ./init.sh
 
 RUN apk update && apk upgrade
 RUN apk add --no-cache vsftpd openssl openrc

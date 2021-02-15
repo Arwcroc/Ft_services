@@ -4,5 +4,8 @@ bases:
   - ./metallb
   - ./nginx
   - ./mysql
+  - ./ftps
+  - ./grafana
+  - ./influxdb
   - ./wordpress
   - ./phpmyadmin
