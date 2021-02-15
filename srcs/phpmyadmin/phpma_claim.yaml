@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: phpma-claim
+  labels:
+    run: phpmyadmin
+spec:
+  storageClassName: phpma
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 600Mi

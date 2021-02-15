@@ -1,0 +1,13 @@
+resources:
+  - ./phpma_service.yaml
+  - ./phpma_dep.yaml
+  - ./phpma_claim.yaml
+  - ./phpma_volume.yaml
+
+configMapGenerator:
+  - name: phpma-nginx-config-map
+    files:
+      - nginx.conf
+  - name: phpma-config-map
+    files:
+      - config.inc.php

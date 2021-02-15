@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    run: wordpress
+    app: ft_services
+spec:
+  selector:
+    matchLabels:
+      run: wordpress
+  template:
+    metadata:
+      labels:
+        run: wordpress
+    spec:
+      containers:
+        - name: wordpress
+          image: wordpress
+          imagePullPolicy: Never
+          env:
+            - name: DB_NAME
+              value: wordpress
+            - name: DB_HOST
+              value: mysql
+            - name: DB_USER
+              value: wordpress
+            - name: DB_PASSWORD
+              value: password
+            - name: MINIKUBE_IP
+              valueFrom:
+                secretKeyRef:
+                  name: minikube-ip
+                  key: ip
+          ports:
+            - name: php-fpm
+              containerPort: 9000
+          volumeMounts:
+            - name: wp-claim
+              mountPath: /var/www/wordpress
+        - name: nginx
+          image: nginx
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 5050
+          volumeMounts:
+            - name: wp-claim
+              mountPath: /var/www/wordpress
+            - name: wp-nginx-config-map
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+      restartPolicy: Always
+      volumes:
+        - name: wp-nginx-config-map
+          configMap:
+            name: wp-nginx-config-map
+        - name: wp-claim
+          persistentVolumeClaim:
+            claimName: wp-claim

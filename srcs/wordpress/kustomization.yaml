@@ -1,0 +1,10 @@
+resources:
+  - wp_volume.yaml
+  - wp_claim.yaml
+  - wp_dep.yaml
+  - wp_service.yaml
+
+configMapGenerator:
+  - name: wp-nginx-config-map
+    files:
+      - nginx.conf

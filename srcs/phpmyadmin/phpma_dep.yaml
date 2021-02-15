@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+  labels:
+    run: phpmyadmin
+    app: ft_services
+spec:
+  selector:
+    matchLabels:
+      run: phpmyadmin
+  template:
+    metadata:
+      labels:
+        run: phpmyadmin
+    spec:
+      containers:
+        - name: phpmyadmin
+          image: phpmyadmin
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 5000
+          volumeMounts:
+            - name: phpma-claim
+              mountPath: /var/www/phpmyadmin
+            - name: phpma-config-map
+              mountPath: /var/www/phpmyadmin/config.inc.php
+              subPath: config.inc.php
+        - name: nginx
+          image: nginx
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 5050
+          volumeMounts:
+            - name: phpma-claim
+              mountPath: /var/www/phpmyadmin
+            - name: phpma-nginx-config-map
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+      restartPolicy: Always
+      volumes:
+        - name: phpma-claim
+          persistentVolumeClaim:
+            claimName: phpma-claim
+        - name: phpma-nginx-config-map
+          configMap:
+            name: phpma-nginx-config-map
+        - name: phpma-config-map
+          configMap:
+            name: phpma-config-map

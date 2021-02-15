@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+ - name: 'ft_services - DockerDash'
+   folder: 'ft_services'
+   folderUid: ''
+   type: file
+   editable: true
+   updateIntervalSeconds: 30
+   options:
+     path: /dockerdadash.json

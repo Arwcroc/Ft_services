@@ -1,0 +1,5 @@
+resources:
+  - idb_volume.yaml
+  - idb_claim.yaml
+  - idb_dep.yaml
+  - idb_service.yaml
