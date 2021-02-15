@@ -14,8 +14,8 @@ IMAGES=(
     mysql
     nginx
     wordpress
-    influxdb
     ftps
+    influxdb
     grafana
 )
 

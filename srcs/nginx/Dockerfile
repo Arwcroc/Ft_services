@@ -20,4 +20,5 @@ RUN rm /etc/nginx/conf.d/default.conf
 
 EXPOSE 80 443 5050 5000
 
+
 CMD nginx -g 'pid /tmp/nginx.pid; daemon off;'
