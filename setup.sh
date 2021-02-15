@@ -1,38 +1,6 @@
 #! /bin/bash
 
-#if [[ ! $(command -v minikube) ]]
-#then
-#	curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
-# 	chmod +x minikube-darwin-amd64
-# 	if [[ $? != 0 ]]
-# 	then
-# 		exit 1
-# 	fi
-# 	sudo mkdir -p /usr/local/bin/
-# 	sudo install minikube-darwin-amd64 /usr/local/bin/minikube
-# fi
-# if [[ ! $(command -v minikube) ]]
-# then
-# 	exit 1
-# fi
-
-# minikube delete
-
-# if [[ ! -d ~/.minikube/machines/minikube ]]
-# then
-# 	minikube start --vm-driver=docker --cpus=4
-# 	if [[ $? != 0 ]]
-# 	then
-# 		exit 1
-# 	fi
-# fi
-
 eval $(minikube docker-env)
-
-if [[ $? != 0 ]]
-then
-	exit 1
-fi
 
 WORKDIR='./srcs/'
 IMAGES=(

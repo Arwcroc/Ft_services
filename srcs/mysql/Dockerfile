@@ -11,10 +11,6 @@ ADD ./srcs/my.cnf /etc/mysql/my.cnf
 ADD ./srcs/table.sql ./table.sql
 ADD ./srcs/init.sh ./init.sh
 
-# RUN mkdir /run/openrc && touch /run/openrc/softlevel
-
-# RUN openrc
-
 EXPOSE 3306
 
 CMD ./init.sh

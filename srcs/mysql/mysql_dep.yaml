@@ -31,10 +31,6 @@ spec:
           volumeMounts:
             - name: mysql-claim
               mountPath: /var/lib/mysql
-        #   lifecycle:
-        #     postStart:
-        #       exec:
-        #         command: ["./srcs/init.sh"]
       restartPolicy: Always
       volumes:
         - name: mysql-claim

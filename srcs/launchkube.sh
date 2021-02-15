@@ -15,6 +15,7 @@ IMAGES=(
     nginx
     wordpress
     influxdb
+    ftps
     grafana
 )
 

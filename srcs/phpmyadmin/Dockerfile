@@ -26,7 +26,6 @@ VOLUME [ "/sys/fs/cgroup/" ]
 
 RUN adduser -D www
 RUN apk update && apk upgrade 
-# RUN apk add --no-cache openrc
 
 RUN apk add --no-cache openrc php7-common php7-imap php7-cgi fcgi php7-posix php7-ldap php7-fpm php7-mcrypt php7-soap php7-openssl php7-gmp php7-pdo_odbc php7-json php7-dom \
  php7-pdo php7-zip php7-mysqli php7-sqlite3 php7-apcu php7-pdo_pgsql php7-bcmath php7-gd php7-odbc php7-pdo_mysql \
