@@ -7,7 +7,7 @@ metadata:
 spec:
   storageClassName: influxdb
   capacity:
-    storage: 600Mi
+    storage: 1Gi
   accessModes:
     - ReadWriteMany
   hostPath:
