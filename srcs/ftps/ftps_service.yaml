@@ -4,24 +4,20 @@ metadata:
   name: ftps
 spec:
   type: LoadBalancer
+  externalIPs:
+    - 192.168.49.24
   ports:
     - name: ftps21
       port: 21
-      nodePort: 30021
     - name: ftps20
       port: 20
-      nodePort: 30020
     - name: ftps100
       port: 30100
-      nodePort: 30100
     - name: ftps101
       port: 30101
-      nodePort: 30101
     - name: ftps102
       port: 30102
-      nodePort: 30102
     - name: ftps103
       port: 30103
-      nodePort: 30103
   selector:
     run: ftps

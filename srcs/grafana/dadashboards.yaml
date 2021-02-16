@@ -6,6 +6,6 @@ providers:
    folderUid: ''
    type: file
    editable: true
-   updateIntervalSeconds: 30
+   updateIntervalSeconds: 5
    options:
      path: /dockerdadash.json

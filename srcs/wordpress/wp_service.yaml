@@ -6,10 +6,12 @@ metadata:
     app: ft_services
 spec:
   type: LoadBalancer
+  externalIPs:
+    - 192.168.49.24
   selector:
     run: wordpress
   ports:
     - name: wordpress
       protocol: TCP
       port: 5050
-      nodePort: 30050
+      targetPort: 5050

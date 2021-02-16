@@ -6,13 +6,14 @@ metadata:
     app: ft_services
 spec:
   type: LoadBalancer
+  externalIPs:
+    - 192.168.49.24
   selector:
     run: nginx
   ports:
     - name: http
       protocol: TCP
       port: 80
-      nodePort: 30080
     - name: https
       protocol: TCP
       port: 443

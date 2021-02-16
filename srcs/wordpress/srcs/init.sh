@@ -12,16 +12,29 @@ then
 						--allow-root
 
 	wp core install		--path=/var/www/wordpress/ \
-						--url=http://192.168.49.2:30050 \
+						--url=http://192.168.49.24:5050 \
 						--title=ft_services \
-						--admin_user=user \
-						--admin_password=password \
+						--admin_user=$DB_USER \
+						--admin_password=$DB_PASSWORD \
 						--admin_email=test@test.com \
 						--allow-root
 
-	chown -R www:www /var/www/wordpress/
-	wp user create flamboux flamboux@test.com --role=author --user_pass=flamboux --path=/var/www/wordpress
-	wp user create choupops choupops@test.com --role=author --user_pass=choupops --path=/var/www/wordpress
+	# chown -R www:www /var/www/wordpress/
+	chmod 777 /var/www/wordpress/
+	wp user create flamboux flamboux@test.com --role=author --user_pass=flamboux --path=/var/www/wordpress --allow-root
+	wp user create choupops choupops@test.com --role=author --user_pass=choupops --path=/var/www/wordpress --allow-root
+# else
+# 	wp core install		--path=/var/www/wordpress/ \
+# 						--url=http://192.168.49.24:5050 \
+# 						--title=ft_services \
+# 						--admin_user=$DB_USER \
+# 						--admin_password=$DB_PASSWORD \
+# 						--admin_email=test@test.com \
+# 						--allow-root
 
+# 	# chown -R www:www /var/www/wordpress/
+# 	chmod 777 /var/www/wordpress/
+# 	wp user create flamboux flamboux@test.com --role=author --user_pass=flamboux --path=/var/www/wordpress
+# 	wp user create choupops choupops@test.com --role=author --user_pass=choupops --path=/var/www/wordpress
 fi
 php-fpm7 -F

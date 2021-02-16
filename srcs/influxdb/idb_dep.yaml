@@ -28,7 +28,7 @@ spec:
               containerPort: 8086
           volumeMounts:
             - name: influxdb-claim
-              mountPath: /root/.influxdbv2
+              mountPath: /root/.influxdb
             - name: docker-host
               mountPath: "/var/run/docker.sock"
       restartPolicy: Always
