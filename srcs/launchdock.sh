@@ -1,5 +1,10 @@
 #! /bin/bash
 
+minikube addons enable dashboard
+minikube addons enable metrics-server
+minikube addons enable metallb
+minikube start
+
 eval $(minikube docker-env)
 
 WORKDIR='./'
