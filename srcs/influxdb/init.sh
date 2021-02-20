@@ -1,6 +1,6 @@
-#! /bin/sh
+#! /bin/bash
 
-influxd & jobs
+influxd & ProcessInfluxd=$!
 
 if [ ! -f /root/.influxdbv2/configs ]
 then
@@ -8,4 +8,4 @@ then
 	influx < influx.inf
 fi
 
-telegraf --config telegraf.conf
+telegraf --config telegraf.conf & ProcessTelegraf=$!; wait -n $ProcessInfluxd $ProcessTelegraf
