@@ -1,5 +1,6 @@
 #! /bin/sh
 
+sleep 15
 if [ ! -f /var/www/wordpress/wp-config.php ]
 then
 	wp core download	--path=/var/www/wordpress --allow-root
